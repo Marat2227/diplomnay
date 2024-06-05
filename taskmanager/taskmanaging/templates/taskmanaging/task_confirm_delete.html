@@ -1,0 +1,9 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h2>Вы уверены, что хотите удалить задачу?"{{ task.title }}"?</h2>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Да, удалить</button>
+  </form>
+{% endblock %}

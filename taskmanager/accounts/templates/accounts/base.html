@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Менеджер Задач{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/styles.css' %}?v={{ timestamp }}">
+</head>
+<body>
+    <div class=background>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'login' %}">Войти в аккаунт</a></li>
+                <li><a href="{% url 'register' %}">Регистрация</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

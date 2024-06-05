@@ -1,0 +1,26 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h2>Ваши Задачи</h2>
+  <form method="get" action="{% url 'task_create' %}" style="display:inline;">
+    <button type="submit">
+      Создать новую задачу
+    </button>
+  </form>
+  
+  <ul>
+    {% for task in taskmanaging %}
+      <li>
+        <form method="get" action="{% url 'task_update' task.pk %}" style="display:inline;">
+          <button type="submit" >
+            {{ task.title }} ({{ task.get_priority_display }})
+          </button>
+        </form>
+        <form method="post" action="{% url 'task_delete' task.pk %}" style="display:inline;">
+          {% csrf_token %}
+          <button type="submit">Удалить</button>
+        </form>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Менеджер Задач</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'taskmanaging/styles.css' %}?v={{ timestamp }}">
+</head>
+<body>
+    <div class = container>
+    <header>
+        <h1>Менеджер Задач</h1>
+        {% if user.is_authenticated %}
+          <p>Добро пожаловать!, {{ user.username }} | <a href="{% url 'logout' %}">Выход</a></p>
+        {% else %}
+          <p><a href="{% url 'login' %}">Войти в учетную запись</a></p>
+        {% endif %}
+        <nav>
+            <ul>
+                <li><a href="{% url 'task_list' %}">Задачи</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+    
+        {% block content %}
+        {% endblock %}
+    </main>
+</div>
+</body>
+</html>
